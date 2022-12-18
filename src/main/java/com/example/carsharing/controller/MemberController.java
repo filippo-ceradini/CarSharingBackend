@@ -12,7 +12,8 @@ import java.util.List;
 @CrossOrigin
 public class MemberController {
 
-    private final MemberService memberService;
+    @Autowired
+    private MemberService memberService;
 
     @Autowired
     public MemberController(MemberService memberService){
@@ -32,6 +33,11 @@ public class MemberController {
     @PostMapping
     public Member save(@RequestBody Member member) {
         return memberService.save(member);
+    }
+
+    @PutMapping
+    public void updateMember(@RequestBody Member member) {
+        memberService.updatedMember(member.getId(), member);
     }
 
     @DeleteMapping("/{id}")

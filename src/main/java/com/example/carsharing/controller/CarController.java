@@ -1,6 +1,7 @@
 package com.example.carsharing.controller;
 
 import com.example.carsharing.model.Car;
+import com.example.carsharing.model.Car;
 import com.example.carsharing.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,10 @@ public class CarController {
     @PostMapping
     public Car save(@RequestBody Car car) {
         return carService.save(car);
+    }
+    @PutMapping
+    public void updateCar(@RequestBody Car car) {
+        carService.updatedCar(car.getId(), car);
     }
 
     @DeleteMapping("/{id}")
